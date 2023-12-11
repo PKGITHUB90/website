@@ -4,11 +4,11 @@ pipeline {
   stages {
     stage('Pull Source') {
       steps {
-        git credentialsId: '9f90fb44-759e-41a6-abed-e7b3a7cb05bf', branch: 'master', url: 'https://github.com/PKGITHUB90/website.git'
+        git credentialsId: '9f90fb44-759e-41a6-abed-e7b3a7cb05bf', url: 'https://github.com/PKGITHUB90/website.git'
       }
     }
     stage('Stop Running Docker Container') {
-	  when {expression { env.BRANCH_NAME == 'master' }}
+      when {expression { env.BRANCH_NAME == 'master' }}
       steps {
         sh 'sudo docker stop website-app'
       }
