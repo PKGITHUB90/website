@@ -32,7 +32,9 @@ pipeline{
 		}		
 		steps {
 			script {
+				sh "kubectl delete deploy website-deployment"
 				sh "kubectl apply -f deploy.yaml"
+				sh "kubectl delete svc my-service"
 				sh "kubectl apply -f service.yaml"
 			}
 		}
